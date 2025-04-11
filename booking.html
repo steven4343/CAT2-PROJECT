@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CavAirline - Book Your Flight</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006B3F; /* Zambian flag green */
+      --secondary: #CE1126; /* Zambian flag red */
+      --accent: #FDB913; /* Zambian gold/yellow */
+      --dark: #333333;
+      --light: #F5F5F5;
+      --white: #FFFFFF;
+      --border: #DDDDDD;
+      --success: #28a745;
+      --danger: #dc3545;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header and Navigation */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+    
+    .logo h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links i {
+      margin-right: 5px;
+    }
+    
+    /* Booking Header */
+    .booking-header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/300') center/cover no-repeat;
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .booking-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .booking-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Booking Process */
+    .booking-process {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0;
+      position: relative;
+    }
+    
+    .booking-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      width: 150px;
+    }
+    
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .step-name {
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .booking-process::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 25%;
+      width: 50%;
+      height: 2px;
+      background-color: var(--primary);
+      z-index: 1;
+    }
+    
+    .booking-step.active .step-number {
+      background-color: var(--accent);
+    }
+    
+    .booking-step.completed .step-number {
+      background-color: var(--success);
+    }
+    
+    /* Booking Form */
+    .booking-form-container {
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .booking-section-title {
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px 20px;
+    }
+    
+    .form-group {
+      padding: 0 15px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    
+    .form-group.half {
+      width: 50%;
+    }
+    
+    .form-group.third {
+      width: 33.333%;
+    }
+    
+    .form-group.quarter {
+      width: 25%;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .required::after {
+      content: '*';
+      color: var(--danger);
+      margin-left: 3px;
+    }
+    
+    /* Flight Selection */
+    .flight-options {
+      margin-top: 30px;
+    }
+    
+    .flight-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .flight-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .flight-card.selected {
+      border: 2px solid var(--primary);
+      background-color: rgba(0, 107, 63, 0.05);
+    }
+    
+    .flight-info {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .flight-time {
+      text-align: center;
+    }
+    
+    .flight-time .time {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .flight-time .date {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .flight-route {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .flight-stops {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .route-line {
+      width: 100px;
+      height: 2px;
+      background-color: #666;
+      position: relative;
+    }
+    
+    .route-line::before {
+      content: '\2022';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      color: #666;
+    }
+    
+    .route-line::after {
+      content: '\2022';
+      position: absolute;
+      top: -8px;
+      right: 0;
+      color: #666;
+    }
+    
+    .flight-details {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .flight-number {
+      font-weight: 500;
+    }
+    
+    .flight-duration {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .flight-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    /* Passenger Info */
+    .passenger-form {
+      margin-top: 30px;
+    }
+    
+    .passenger-title {
+      background-color: var(--light);
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+    /* Additional Services */
+    .service-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .service-option:last-child {
+      border-bottom: none;
+    }
+    
+    .service-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+    
+    .service-details h4 {
+      margin-bottom: 5px;
+    }
+    
+    .service-price {
+      font-weight: bold;
+    }
+    
+    /* Payment */
+    .payment-options {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .payment-option {
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 15px;
+      flex: 1;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .payment-option:hover {
+      border-color: var(--primary);
+      background-color: rgba(0, 107, 63, 0.05);
+    }
+    
+    .payment-option.selected {
+      border-color: var(--primary);
+      background-color: rgba(0, 107, 63, 0.05);
+    }
+    
+    .payment-option i {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    
+    /* Booking Summary */
+    .booking-summary {
+      background-color: var(--light);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+    
+    .summary-total {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    
+    /* Buttons */
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+    
+    .btn-primary:hover {
+      background-color: #005230;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(0, 107, 63, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .form-group.half,
+      .form-group.third,
+      .form-group.quarter {
+        width: 100%;
+      }
+      
+      .flight-info {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
+      
+      .flight-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      
+      .booking-step {
+        width: 90px;
+      }
+      
+      .step-name {
+        font-size: 0.8rem;
+      }
+      
+      .payment-options {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header and Navigation -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="airline-logo.jpg" alt="CavAirline Logo">
+          <h1>Cav<span>Airline</span></h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-plane"></i> Flights</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Booking Header -->
+  <section class="booking-header">
+    <div class="container">
+      <h2>Book Your Flight</h2>
+      <p>Easy and secure flight booking with CavAirline - Your journey begins here</p>
+    </div>
+  </section>
+
+  <!-- Booking Process Steps -->
+  <div class="container">
+    <div class="booking-process">
+      <div class="booking-step active">
+        <div class="step-number">1</div>
+        <div class="step-name">Search</div>
+      </div>
+      <div class="booking-step">
+        <div class="step-number">2</div>
+        <div class="step-name">Select Flight</div>
+      </div>
+      <div class="booking-step">
+        <div class="step-number">3</div>
+        <div class="step-name">Passenger Info</div>
+      </div>
+      <div class="booking-step">
+        <div class="step-number">4</div>
+        <div class="step-name">Payment</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Form Container -->
+  <div class="container">
+    <div class="booking-form-container">
+      <!-- STEP 1: SEARCH FLIGHTS -->
+      <section id="search-flights">
+        <h3 class="booking-section-title">Search Flights</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">Trip Type</label>
+              <select id="trip-type">
+                <option value="round-trip">Round Trip</option>
+                <option value="one-way">One Way</option>
+                <option value="multi-city">Multi-City</option>
+              </select>
+            </div>
+            <div class="form-group half">
+              <label class="required">Class</label>
+              <select id="cabin-class">
+                <option value="economy">Economy</option>
+                <option value="business">Business Class</option>
+                <option value="first">First Class</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">From</label>
+              <select id="departure-airport">
+                <option value="">Select Departure City</option>
+                <option value="LUN">Lusaka (LUN)</option>
+                <option value="NLA">Ndola (NLA)</option>
+                <option value="LVI">Livingstone (LVI)</option>
+                <option value="MFU">Mfuwe (MFU)</option>
+                <option value="KIW">Kitwe (KIW)</option>
+              </select>
+            </div>
+            <div class="form-group half">
+              <label class="required">To</label>
+              <select id="arrival-airport">
+                <option value="">Select Destination City</option>
+                <option value="LUN">Lusaka (LUN)</option>
+                <option value="NLA">Ndola (NLA)</option>
+                <option value="LVI">Livingstone (LVI)</option>
+                <option value="MFU">Mfuwe (MFU)</option>
+                <option value="JNB">Johannesburg (JNB)</option>
+                <option value="HRE">Harare (HRE)</option>
+                <option value="ADD">Addis Ababa (ADD)</option>
+                <option value="NBO">Nairobi (NBO)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">Departure Date</label>
+              <input type="date" id="departure-date" required>
+            </div>
+            <div class="form-group half">
+              <label>Return Date</label>
+              <input type="date" id="return-date">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group quarter">
+              <label class="required">Adults (12+ years)</label>
+              <select id="adults">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="form-group quarter">
+              <label>Children (2-11 years)</label>
+              <select id="children">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="form-group quarter">
+              <label>Infants (0-23 months)</label>
+              <select id="infants">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </div>
+            <div class="form-group quarter">
+              <label>Promo Code</label>
+              <input type="text" placeholder="Optional">
+            </div>
+          </div>
+          
+          <div class="btn-container">
+            <div></div> <!-- Empty div for spacing -->
+            <button type="button" class="btn btn-primary" id="search-btn">Search Flights</button>
+          </div>
+        </form>
+      </section>
+      
+      <!-- STEP 2: SELECT FLIGHTS -->
+      <section id="select-flights" style="display: none;">
+        <h3 class="booking-section-title">Select Outbound Flight</h3>
+        <p>Lusaka (LUN) to Livingstone (LVI) - Wed, 9 Apr 2025</p>
+        
+        <div class="flight-options">
+          <div class="flight-card selected">
+            <div class="flight-info">
+              <div class="flight-time">
+                <div class="time">08:00</div>
+                <div class="date">9 Apr</div>
+                <div>LUN</div>
+              </div>
+              
+              <div class="flight-route">
+                <div class="flight-stops">
+                  <div class="route-line"></div>
+                  <div>Direct</div>
+                </div>
+              </div>
+              
+              <div class="flight-time">
+                <div class="time">09:30</div>
+                <div class="date">9 Apr</div>
+                <div>LVI</div>
+              </div>
+              
+              <div class="flight-details">
+                <div class="flight-number">CZ 102</div>
+                <div class="flight-duration">1h 30m</div>
+                <div>Embraer E190</div>
+              </div>
+            </div>
+            
+            <div class="flight-price">
+              ZMW 1,250
+            </div>
+          </div>
+          
+          <div class="flight-card">
+            <div class="flight-info">
+              <div class="flight-time">
+                <div class="time">12:45</div>
+                <div class="date">9 Apr</div>
+                <div>LUN</div>
+              </div>
+              
+              <div class="flight-route">
+                <div class="flight-stops">
+                  <div class="route-line"></div>
+                  <div>Direct</div>
+                </div>
+              </div>
+              
+              <div class="flight-time">
+                <div class="time">14:15</div>
+                <div class="date">9 Apr</div>
+                <div>LVI</div>
+              </div>
+              
+              <div class="flight-details">
+                <div class="flight-number">CZ 104</div>
+                <div class="flight-duration">1h 30m</div>
+                <div>Boeing 737-500</div>
+              </div>
+            </div>
+            
+            <div class="flight-price">
+              ZMW 1,450
+            </div>
+          </div>
+          
+          <div class="flight-card">
+            <div class="flight-info">
+              <div class="flight-time">
+                <div class="time">17:30</div>
+                <div class="date">9 Apr</div>
+                <div>LUN</div>
+              </div>
+              
+              <div class="flight-route">
+                <div class="flight-stops">
+                  <div class="route-line"></div>
+                  <div>Direct</div>
+                </div>
+              </div>
+              
+              <div class="flight-time">
+                <div class="time">19:00</div>
+                <div class="date">9 Apr</div>
+                <div>LVI</div>
+              </div>
+              
+              <div class="flight-details">
+                <div class="flight-number">CZ 106</div>
+                <div class="flight-duration">1h 30m</div>
+                <div>Embraer E190</div>
+              </div>
+            </div>
+            
+            <div class="flight-price">
+              ZMW 1,150
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="booking-section-title">Select Return Flight</h3>
+        <p>Livingstone (LVI) to Lusaka (LUN) - Sun, 13 Apr 2025</p>
+        
+        <div class="flight-options">
+          <div class="flight-card">
+            <div class="flight-info">
+              <div class="flight-time">
+                <div class="time">07:15</div>
+                <div class="date">13 Apr</div>
+                <div>LVI</div>
+              </div>
+              
+              <div class="flight-route">
+                <div class="flight-stops">
+                  <div class="route-line"></div>
+                  <div>Direct</div>
+                </div>
+              </div>
+              
+              <div class="flight-time">
+                <div class="time">08:45</div>
+                <div class="date">13 Apr</div>
+                <div>LUN</div>
+              </div>
+              
+              <div class="flight-details">
+                <div class="flight-number">CZ 101</div>
+                <div class="flight-duration">1h 30m</div>
+                <div>Embraer E190</div>
+              </div>
+            </div>
+            
+            <div class="flight-price">
+              ZMW 1,250
+            </div>
+          </div>
+          
+          <div class="flight-card selected">
+            <div class="flight-info">
+              <div class="flight-time">
+                <div class="time">14:30</div>
+                <div class="date">13 Apr</div>
+                <div>LVI</div>
+              </div>
+              
+              <div class="flight-route">
+                <div class="flight-stops">
+                  <div class="route-line"></div>
+                  <div>Direct</div>
+                </div>
+              </div>
+              
+              <div class="flight-time">
+                <div class="time">16:00</div>
+                <div class="date">13 Apr</div>
+                <div>LUN</div>
+              </div>
+              
+              <div class="flight-details">
+                <div class="flight-number">CZ 103</div>
+                <div class="flight-duration">1h 30m</div>
+                <div>Boeing 737-500</div>
+              </div>
+            </div>
+            
+            <div class="flight-price">
+              ZMW 1,150
+            </div>
+          </div>
+        </div>
+        
+        <div class="btn-container">
+          <button type="button" class="btn btn-outline" id="back-to-search">Back</button>
+          <button type="button" class="btn btn-primary" id="continue-to-passengers">Continue</button>
+        </div>
+      </section>
+      
+      <!-- STEP 3: PASSENGER INFORMATION -->
+      <section id="passenger-info" style="display: none;">
+        <h3 class="booking-section-title">Passenger Information</h3>
+        
+        <div class="passenger-form">
+          <div class="passenger-title">
+            <h4>Adult 1 (Primary Contact)</h4>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group third">
+              <label class="required">Title</label>
+              <select>
+                <option value="">Select</option>
+                <option value="mr">Mr</option>
+                <option value="mrs">Mrs</option>
+                <option value="ms">Ms</option>
+                <option value="dr">Dr</option>
+              </select>
+            </div>
+            <div class="form-group third">
+              <label class="required">First Name</label>
+              <input type="text" required>
+            </div>
+            <div class="form-group third">
+              <label class="required">Last Name</label>
+              <input type="text" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">Date of Birth</label>
+              <input type="date" required>
+            </div>
+            <div class="form-group half">
+              <label class="required">Nationality</label>
+              <select>
+                <option value="">Select</option>
+                <option value="zm">Zambian</option>
+                <option value="zw">Zimbabwean</option>
+                <option value="za">South African</option>
+                <option value="us">American</option>
+                <option value="gb">British</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">Passport Number</label>
+              <input type="text" required>
+            </div>
+            <div class="form-group half">
+              <label class="required">Passport Expiry Date</label>
+              <input type="date" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group half">
+              <label class="required">Email Address</label>
+              <input type="email" required>
+            </div>
+            <div class="form-group half">
+              <label class="required">Phone Number</label>
+              <input type="tel" required>
+            </div>
+          </div>
+        </div>
+        
+        <h3 class="booking-section-title">Additional Services</h3>
+        
+        <div class="service-option">
+          <div class="service-info">
+            <div class="service-icon">
+              <i class="fas fa-suitcase"></i>
+            </div>
+            <div class="service-details">
+              <h4>Extra Baggage</h4>
+              <p>Add an additional 23kg checked baggage</p>
+            </div>
+          </div>
+          <div class="service-price">
+            ZMW 350
+            <input type="checkbox">
+          </div>
+        </div>
+        
+        <div class="service-option">
+          <div class="service-info">
+            <div class="service-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <div class="service-details">
+              <h4>Special Meal</h4>
+              <p>Request vegetarian, halal, or other special meals</p>
+            </div>
+          </div>
+          <div class="service-price">
+            ZMW 150
+            <input type="checkbox">
+          </div>
+        </div>
+        
+        <div class="service-option
