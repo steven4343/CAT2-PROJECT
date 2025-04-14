@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cav Airline Flight Schedule</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: url('plane.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1.5s ease-in-out;
+            margin: 0;
+        }
+
+        .header-logo {
+            height: 80px;
+            width: auto;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .flight-schedule {
+            background: rgba(255, 255, 255, 0.608);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-left: 4px solid #2a5298;
+            padding-left: 10px;
+            color: #2a5298;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        th {
+            background: #2a5298;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        td {
+            font-size: 1rem;
+            color: #333333;
+        }
+
+        tr {
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        tr:hover {
+            background: rgba(42, 82, 152, 0.05);
+            transform: scale(1.02);
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            text-align: center;
+            display: inline-block;
+            color: #ffffff;
+        }
+
+        .on-time {
+            background: #28a745;
+        }
+
+        .delayed {
+            background: #dc3545;
+        }
+
+        .cancelled {
+            background: #6c757d;
+        }
+
+        .flight-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('https://img.icons8.com/ios-filled/50/2a5298/airplane-take-off.png') no-repeat center;
+            background-size: contain;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .flight-schedule {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="CavSchedule logo.png" alt="Cav Airline Logo" class="header-logo">
+            <h1>Cav Airline Flight Schedule</h1>
+        </header>
+
+        <!-- International Flights -->
+        <section class="flight-schedule">
+            <h2>International Flights</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><span class="flight-icon"></span>Flight</th>
+                        <th>Airline</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ET829</td>
+                        <td>Ethiopian Airlines</td>
+                        <td>Addis Ababa (ADD)</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>09:30 AM</td>
+                        <td>12:45 PM</td>
+                        <td><span class="status on-time">On Time</span></td>
+                    </tr>
+                    <tr>
+                        <td>EK713</td>
+                        <td>Emirates</td>
+                        <td>Dubai (DXB)</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>10:15 AM</td>
+                        <td>03:20 PM</td>
+                        <td><span class="status delayed">Delayed</span></td>
+                    </tr>
+                    <tr>
+                        <td>4Z162</td>
+                        <td>Airlink</td>
+                        <td>Johannesburg (JNB)</td>
+                        <td>Livingstone (LVI)</td>
+                        <td>11:40 AM</td>
+                        <td>01:25 PM</td>
+                        <td><span class="status on-time">On Time</span></td>
+                    </tr>
+                    <tr>
+                        <td>KQ704</td>
+                        <td>Kenya Airways</td>
+                        <td>Nairobi (NBO)</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>06:50 PM</td>
+                        <td>09:10 PM</td>
+                        <td><span class="status cancelled">Cancelled</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Domestic Flights -->
+        <section class="flight-schedule">
+            <h2>Domestic Flights</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><span class="flight-icon"></span>Flight</th>
+                        <th>Airline</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>P0304</td>
+                        <td>Proflight Zambia</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>Livingstone (LVI)</td>
+                        <td>08:00 AM</td>
+                        <td>09:10 AM</td>
+                        <td><span class="status on-time">On Time</span></td>
+                    </tr>
+                    <tr>
+                        <td>P0608</td>
+                        <td>Proflight Zambia</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>Ndola (NLA)</td>
+                        <td>10:30 AM</td>
+                        <td>11:15 AM</td>
+                        <td><span class="status on-time">On Time</span></td>
+                    </tr>
+                    <tr>
+                        <td>MH102</td>
+                        <td>Mahogany Air</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>Mansa (MNS)</td>
+                        <td>01:00 PM</td>
+                        <td>02:30 PM</td>
+                        <td><span class="status delayed">Delayed</span></td>
+                    </tr>
+                    <tr>
+                        <td>P0820</td>
+                        <td>Proflight Zambia</td>
+                        <td>Lusaka (LUN)</td>
+                        <td>Mfuwe (MFU)</td>
+                        <td>03:45 PM</td>
+                        <td>05:00 PM</td>
+                        <td><span class="status on-time">On Time</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>
