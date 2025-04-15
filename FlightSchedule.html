@@ -47,6 +47,41 @@
             width: auto;
             animation: fadeIn 1.5s ease-in-out;
         }
+         .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.889);
+            padding: 10px 10px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #2a5298;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .home-button:hover {
+            background: #2a5298;
+            color: rgba(255, 255, 255, 0.378);
+            transform: translateY(-2px);
+        }
+
+        .home-icon {
+            width: 20px;
+            height: 20px;
+            background: url('https://img.icons8.com/ios-filled/50/2a5298/home.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .home-button:hover .home-icon {
+            background: url('https://img.icons8.com/ios-filled/50/ffffff/home.png') no-repeat center;
+            background-size: contain;
+        }
 
         .flight-schedule {
             background: rgba(255, 255, 255, 0.608);
@@ -157,6 +192,10 @@
 </head>
 <body>
     <div class="container">
+          <a href="index.html" class="home-button">
+            <span class="home-icon"></span>
+            Home
+        </a>
         <header>
             <img src="images/CavSchedule logo.png" alt="Cav Airline Logo" class="header-logo">
             <h1>Cav Airline Flight Schedule</h1>
