@@ -323,9 +323,16 @@
       justify-content: center;
       align-items: center;
       height: 400px;
-      background-color: #000;
+      background-color: whitesmoke;
       border-radius: 10px;
       overflow: hidden;
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+
+    }
+    .video-container video{
+      width: 100%;
     }
     
     /* Gallery */
@@ -342,6 +349,47 @@
       border-radius: 10px;
       overflow: hidden;
     }
+    .team-members {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .team-track {
+      display: flex;
+      animation: slideTeam 12s linear infinite;
+    }
+
+    @keyframes slideTeam {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .member {
+      text-align: center;
+      min-width: 150px;
+      margin: 0 1rem;
+    }
+
+    .member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgb(158, 166, 180);
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .member img:hover {
+      transform: scale(1.1);
+    }
+
+    .member-name {
+      font-weight: bold;
+    }
+
     
     /* Footer */
     footer {
