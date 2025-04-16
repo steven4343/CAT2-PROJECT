@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cav Airline Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white p-4 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Cav Airline</h1>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex space-x-4">
+        <a href="index.html" class="hover:text-yellow-300">Home</a>
+        <a href="FlightSchedule.html" class="hover:text-yellow-300">Flights</a>
+        <a href="blog.html" class="hover:text-yellow-300">Blog</a>
+        <a href="#" class="hover:text-yellow-300">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden mt-3 space-y-2">
+      <a href="#" class="block px-4 py-2 hover:bg-blue-800">Home</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-800">Flights</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-800">Blog</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-800">Contact</a>
+    </div>
+  </header>
+
+  <!-- Blog Section -->
+  <section class="max-w-7xl mx-auto px-4 py-6">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">Latest from Our Blog</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Blog Post Card -->
+      <article class="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x200/?airplane" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-1">Top 5 Travel Tips for 2025</h3>
+          <p class="text-sm text-gray-600 mb-3">Discover how to make your flights more comfortable and stress-free.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:underline text-sm">Read More</a>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x200/?airport" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-1">Behind the Scenes at Cav Airline</h3>
+          <p class="text-sm text-gray-600 mb-3">A glimpse into the day-to-day life of our crew and staff.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:underline text-sm">Read More</a>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl shadow-md hover:shadow-xl overflow-hidden">
+        <img src="https://source.unsplash.com/400x200/?travel" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="text-lg font-semibold mb-1">Best Destinations to Explore in 2025</h3>
+          <p class="text-sm text-gray-600 mb-3">Plan your adventures with our top picks for this year.</p>
+          <a href="#" class="text-blue-600 font-semibold hover:underline text-sm">Read More</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white text-center py-4">
+    <p class="text-sm">&copy; 2025 Cav Airline. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Toggle -->
+  <script>
+    const toggleBtn = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    toggleBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
