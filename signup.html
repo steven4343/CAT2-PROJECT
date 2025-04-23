@@ -4,20 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up</title>
-  <link rel="stylesheet" href="/signup.css" />
+  <link rel="stylesheet" href="signup.css" />
 </head>
 <body>
   <div class="container">
-    <form class="login-form">
+    <form class="login-form" id="signupForm">
       <h2>Sign Up</h2>
-      <input type="text" placeholder="Username" required />
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Create Account</button>
       <p class="signup-link">
-        Already have an account? <a href="/login.html">Login</a>
+        Already have an account? <a href="login.html">Login</a>
       </p>
     </form>
+    
+    <script>
+      document.getElementById("signupForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+    
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+    
+        const user = { username, email, password };
+    
+        // Save user to localStorage
+        localStorage.setItem("user", JSON.stringify(user));
+    
+        alert("Account created successfully! Now log in.");
+        window.location.href = "login.html";
+      });
+    </script>
+    
   </div>
 </body>
 </html>
