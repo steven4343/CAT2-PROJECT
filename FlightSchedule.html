@@ -40,6 +40,8 @@
             letter-spacing: 2px;
             animation: fadeIn 1.5s ease-in-out;
             margin: 0;
+            color: #316324;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .header-logo {
@@ -47,7 +49,47 @@
             width: auto;
             animation: fadeIn 1.5s ease-in-out;
         }
-         .home-button {
+        
+        /* Live clock styling */
+        .live-clock-container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #316324;
+        }
+        
+        #live-clock {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #316324;
+            letter-spacing: 2px;
+        }
+        
+        #date-display {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .time-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #316324;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .home-button {
             position: fixed;
             top: 20px;
             left: 20px;
@@ -55,7 +97,7 @@
             padding: 10px 10px;
             border-radius: 25px;
             text-decoration: none;
-            color: #2a5298;
+            color: #3e9400;
             font-weight: bold;
             display: flex;
             align-items: center;
@@ -66,8 +108,8 @@
         }
 
         .home-button:hover {
-            background: #2a5298;
-            color: rgba(255, 255, 255, 0.378);
+            background: #a80000;
+            color: rgba(99, 99, 99, 0.978);
             transform: translateY(-2px);
         }
 
@@ -91,20 +133,26 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
             border: 1px solid #e0e0e0;
+            transition: transform 0.3s ease;
+        }
+        
+        .flight-schedule:hover {
+            transform: translateY(-5px);
         }
 
         h2 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            border-left: 4px solid #2a5298;
+            border-left: 4px solid #ff0000;
             padding-left: 10px;
-            color: #2a5298;
+            color: #316324;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         th, td {
@@ -114,15 +162,20 @@
         }
 
         th {
-            background: #2a5298;
+            background: #434242a9;
             text-transform: uppercase;
             font-size: 1.1rem;
             color: #ffffff;
+            font-weight: bold;
         }
 
         td {
             font-size: 1rem;
             color: #333333;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         tr {
@@ -141,6 +194,7 @@
             text-align: center;
             display: inline-block;
             color: #ffffff;
+            font-weight: bold;
         }
 
         .on-time {
@@ -154,6 +208,14 @@
         .cancelled {
             background: #6c757d;
         }
+        
+        .boarding {
+            background: #fd7e14;
+        }
+        
+        .landed {
+            background: #17a2b8;
+        }
 
         .flight-icon {
             display: inline-block;
@@ -164,6 +226,26 @@
             vertical-align: middle;
             margin-right: 5px;
         }
+        
+        .flight-number {
+            font-weight: bold;
+            color: #316324;
+        }
+        
+        .refresh-bar {
+            height: 3px;
+            background: linear-gradient(to right, #316324, #3e9400);
+            width: 0%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            animation: refresh 60s linear infinite;
+        }
+        
+        @keyframes refresh {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
 
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(-20px); }
@@ -172,27 +254,91 @@
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .header-logo {
+                height: 60px;
             }
 
             h2 {
-                font-size: 1.5rem;
-            }
-
-            th, td {
-                padding: 10px;
-                font-size: 0.9rem;
+                font-size: 1.3rem;
             }
 
             .flight-schedule {
-                padding: 15px;
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            th, td {
+                padding: 8px;
+                font-size: 0.85rem;
+            }
+
+            .status {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+            
+            #live-clock {
+                font-size: 1.8rem;
+            }
+            
+            #date-display {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .home-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .home-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            th, td {
+                padding: 6px;
+                font-size: 0.8rem;
+            }
+
+            .flight-icon {
+                width: 16px;
+                height: 16px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="refresh-bar"></div>
     <div class="container">
-          <a href="index.html" class="home-button">
+        <a href="index.html" class="home-button">
             <span class="home-icon"></span>
             Home
         </a>
@@ -200,11 +346,17 @@
             <img src="images/CavSchedule logo.png" alt="Cav Airline Logo" class="header-logo">
             <h1>Cav Airline Flight Schedule</h1>
         </header>
+        
+        <!-- Live Clock -->
+        <div class="live-clock-container">
+            <div><span class="time-indicator"></span><span id="live-clock">00:00:00</span></div>
+            <div id="date-display">Loading date...</div>
+        </div>
 
         <!-- International Flights -->
         <section class="flight-schedule">
             <h2>International Flights</h2>
-            <table>
+            <table id="international-flights">
                 <thead>
                     <tr>
                         <th><span class="flight-icon"></span>Flight</th>
@@ -218,7 +370,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>ET829</td>
+                        <td class="flight-number">ET829</td>
                         <td>Ethiopian Airlines</td>
                         <td>Addis Ababa (ADD)</td>
                         <td>Lusaka (LUN)</td>
@@ -227,7 +379,7 @@
                         <td><span class="status on-time">On Time</span></td>
                     </tr>
                     <tr>
-                        <td>EK713</td>
+                        <td class="flight-number">EK713</td>
                         <td>Emirates</td>
                         <td>Dubai (DXB)</td>
                         <td>Lusaka (LUN)</td>
@@ -236,16 +388,16 @@
                         <td><span class="status delayed">Delayed</span></td>
                     </tr>
                     <tr>
-                        <td>4Z162</td>
+                        <td class="flight-number">4Z162</td>
                         <td>Airlink</td>
                         <td>Johannesburg (JNB)</td>
                         <td>Livingstone (LVI)</td>
                         <td>11:40 AM</td>
                         <td>01:25 PM</td>
-                        <td><span class="status on-time">On Time</span></td>
+                        <td><span class="status boarding">Boarding</span></td>
                     </tr>
                     <tr>
-                        <td>KQ704</td>
+                        <td class="flight-number">KQ704</td>
                         <td>Kenya Airways</td>
                         <td>Nairobi (NBO)</td>
                         <td>Lusaka (LUN)</td>
@@ -260,7 +412,7 @@
         <!-- Domestic Flights -->
         <section class="flight-schedule">
             <h2>Domestic Flights</h2>
-            <table>
+            <table id="domestic-flights">
                 <thead>
                     <tr>
                         <th><span class="flight-icon"></span>Flight</th>
@@ -274,16 +426,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>P0304</td>
+                        <td class="flight-number">P0304</td>
                         <td>Proflight Zambia</td>
                         <td>Lusaka (LUN)</td>
                         <td>Livingstone (LVI)</td>
                         <td>08:00 AM</td>
                         <td>09:10 AM</td>
-                        <td><span class="status on-time">On Time</span></td>
+                        <td><span class="status landed">Landed</span></td>
                     </tr>
                     <tr>
-                        <td>P0608</td>
+                        <td class="flight-number">P0608</td>
                         <td>Proflight Zambia</td>
                         <td>Lusaka (LUN)</td>
                         <td>Ndola (NLA)</td>
@@ -292,7 +444,7 @@
                         <td><span class="status on-time">On Time</span></td>
                     </tr>
                     <tr>
-                        <td>MH102</td>
+                        <td class="flight-number">MH102</td>
                         <td>Mahogany Air</td>
                         <td>Lusaka (LUN)</td>
                         <td>Mansa (MNS)</td>
@@ -301,7 +453,7 @@
                         <td><span class="status delayed">Delayed</span></td>
                     </tr>
                     <tr>
-                        <td>P0820</td>
+                        <td class="flight-number">P0820</td>
                         <td>Proflight Zambia</td>
                         <td>Lusaka (LUN)</td>
                         <td>Mfuwe (MFU)</td>
@@ -313,5 +465,24 @@
             </table>
         </section>
     </div>
+
+    <script>
+        // Live clock functionality
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date-display').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Initialize clock and set interval
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
 </body>
 </html>
