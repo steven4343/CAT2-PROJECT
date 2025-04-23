@@ -43,6 +43,10 @@
             color: #316324;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
+        
+        header h1 span {
+            color: #ff0000;
+        }
 
         .header-logo {
             height: 80px;
@@ -66,6 +70,10 @@
             font-weight: bold;
             color: #316324;
             letter-spacing: 2px;
+        }
+        
+        #live-clock .minutes {
+            color: #ff0000;
         }
         
         #date-display {
@@ -344,7 +352,7 @@
         </a>
         <header>
             <img src="images/CavSchedule logo.png" alt="Cav Airline Logo" class="header-logo">
-            <h1>Cav Airline Flight Schedule</h1>
+            <h1>Cav <span>Airline</span> Flight Schedule</h1>
         </header>
         
         <!-- Live Clock -->
@@ -474,7 +482,7 @@
             const minutes = now.getMinutes().toString().padStart(2, '0');
             const seconds = now.getSeconds().toString().padStart(2, '0');
             
-            document.getElementById('live-clock').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('live-clock').innerHTML = `${hours}:<span class="minutes">${minutes}</span>:${seconds}`;
             
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('date-display').textContent = now.toLocaleDateString('en-US', options);
