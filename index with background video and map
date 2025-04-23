@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CavAirline - Fly the Zambian Skies</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+</head>
+<body>
+  <!-- Header and Navigation -->
+ <!--- 
+  </video>
+  -->
+  <header>
+  
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="airline-logo.jpg" alt="CavAirline Logo">
+          <h1>Cav<span>Airline</span></h1>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="dropdown">
+            <a href="#"><i class="fas fa-plane"></i> Services</a>
+            <div class="dropdown-content">
+              <a href="booking.html">Booking</a>
+              <a href="blog.html">Blog</a>
+              <a href="Our Services.html">Our Services</a>
+            </div>
+          </li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+ 
+
+  <section class="hero">
+    <div class="container">
+      <h2>Explore Zambia's Beauty From Above</h2>
+      <p>Experience unparalleled comfort and legendary Zambian hospitality as you soar through the skies with CavAirline.</p>
+      <a href="#" class="btn">Book Now</a>
+      <a href="#" class="btn btn-secondary">Explore Destinations</a>
+    </div>
+
+    <div class="vedi">
+      <video autoplay loop muted plays-inline class="backvideo">
+        <source src="mixkit-pink-sunset-seen-from-a-plane-window-4204-hd-ready.mp4" type="video/mp4">
+    </div>
+
+    
+  </section>
+
+  <!-- Search Section -->
+  <div class="container">
+    <div class="search-section">
+      <form class="search-form">
+        <div class="form-group">
+          <label>From</label>
+          <input type="text" placeholder="Departure City">
+        </div>
+        <div class="form-group">
+          <label>To</label>
+          <input type="text" placeholder="Destination City">
+        </div>
+        <div class="form-group">
+          <label>Depart</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Return</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Passengers</label>
+          <select>
+            <option>1 Passenger</option>
+            <option>2 Passengers</option>
+            <option>3 Passengers</option>
+            <option>4+ Passengers</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button type="submit" class="btn">Search Flights</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Experience exceptional service and comfort with CavAirline's range of services designed to make your journey memorable.</p>
+      </div>
+      <div class="services">
+        <div class="service-card">
+          <div class="service-img">
+            <img src="images/location-3.jpg" alt="Business Class">
+          </div>
+          <div class="service-content">
+            <h3><i class="fas fa-star"></i> Business Class</h3>
+            <p>Enjoy premium comfort with our business class services featuring exclusive lounges, priority boarding, and in-flight luxury.</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="images/location-4.jpg" alt="Cargo Services">
+          </div>
+          <div class="service-content">
+            <h3><i class="fas fa-box"></i> Cargo Services</h3>
+            <p>Reliable and efficient cargo services for all your shipping needs across Zambia and beyond.</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img">
+            <img src="images/location-1.webp" alt="Holiday Packages">
+          </div>
+          <div class="service-content">
+            <h3><i class="fas fa-umbrella-beach"></i> Holiday Packages</h3>
+            <p>Discover Zambia with our curated holiday packages including flights, accommodations, and guided tours.</p>
+            <a href="#" class="btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Passengers Say</h2>
+        <p>Read reviews from our satisfied customers who have experienced the CavAirline difference.</p>
+      </div>
+      <div class="testimonial-container">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-img">
+              <img src="" alt="Testimonial">
+            </div>
+            <div class="testimonial-author">
+              <h4>Sandra Iradukunda</h4>
+              <p>Frequent Flyer</p>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            <p>"I've been flying with CavAirline for my business trips across Zambia for years. Their punctuality and customer service are unmatched!"</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-img">
+              <img src="" alt="Testimonial">
+            </div>
+            <div class="testimonial-author">
+              <h4>Margaret Habiyaremye</h4>
+              <p>Tourist</p>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            <p>"My journey to Victoria Falls with CavAirline was incredible. The staff were attentive and the views during the flight were breathtaking."</p>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-img">
+              <img src="" alt="Testimonial">
+            </div>
+            <div class="testimonial-author">
+              <h4>Chisomo Banda</h4>
+              <p>Family Traveler</p>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            <p>"The family-friendly services made our trip so much easier. The children were well-entertained and the staff were incredibly helpful."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Network</h2>
+        <p>Explore our extensive network covering all major destinations across Zambia and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="map">
+    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3831.293223278524!2d28.318017875168852!3d-15.413384013688795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19408ca173d837b5%3A0x3c5fb2447f7a18d3!2sCavendish%20University%20School%20Of%20Medicine!5e1!3m2!1sen!2szm!4v1745315474061!5m2!1sen!2szm" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+
+  </div>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Experience CavAirline</h2>
+        <p>Take a virtual tour of our aircraft and experience our premium services before you fly.</p>
+      </div>
+      <div class="video-container">
+        <img src="/api/placeholder/800/400" alt="CavAirline Video">
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Explore images from our flights, destinations, and behind-the-scenes glimpses of CavAirline.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="location-1.webp" alt="Gallery Image">
+        </div>
+        <div class="gallery-item">
+          <img src="location-2.jpg" alt="Gallery Image">
+        </div>
+        <div class="gallery-item">
+          <img src="location-3.jpg" alt="Gallery Image">
+        </div>
+        <div class="gallery-item">
+          <img src="location-4.jpg" alt="Gallery Image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About CavAirline</h3>
+          <p>Zambia's premier airline with a commitment to safety, comfort, and exceptional service since 2005.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Destinations</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="booking.html">Flight Booking</a></li>
+            <li><a href="Our Services.html">Cargo Services</a></li>
+            <li><a href="#">Holiday Packages</a></li>
+            <li><a href="#">Charter Flights</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Lusaka Road, Zambia</li>
+            <li><i class="fas fa-phone"></i> +260 123 456 789</li>
+            <li><i class="fas fa-envelope"></i> info@cavairline.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 CavAirline. All Rights Reserved.</p>
+      </div>
+    </div>
+
+    
+    :root {
+      --primary: #006B3F; /* Zambian flag green */
+      --secondary: #CE1126; /* Zambian flag red */
+      --accent: #FDB913; /* Zambian gold/yellow */
+      --dark: #333333;
+      --light: #F5F5F5;
+      --white: #FFFFFF;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .vedi{
+      width: 100%;
+      top: 1%;
+      height: 56vh;
+      position:absolute;
+      object-fit: cover;
+      border: 1px solid rgb(255, 255, 255);
+      z-index: -1;
+    }
+
+
+    .vedi video{
+      position: relative;
+      height: 56vh;
+      width: 100%;
+      object-fit: cover;
+
+    } 
+
+    
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      
+    }
+
+    .hero .container{
+      z-index: 90;
+    } 
+    
+    /* Header and Navigation */
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+    
+    .logo h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .logo span {
+      color: var(--secondary);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 30px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links i {
+      margin-right: 5px;
+    }
+    
+    .nav-links .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      border-radius: 5px;
+    }
+    
+    .dropdown-content a {
+      padding: 12px 16px;
+      display: block;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Hero Section */
+    /*.backvideo{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+
+    }
+    @media(min-aspect-ratio:16/9){
+      .backvideo{
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @media(max-aspect-ratio:16/9){
+      .backvideo{
+        width: 100%;
+        height: auto;
+      }
+    }*/
+    
+    .hero {
+      /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;*/
+      color: var(--white);
+      border: 1px solid rgb(255, 255, 255);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #005230;
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: #b60e20;
+    }
+    
+    /* Search Section */
+    .search-section {
+      background-color: var(--white);
+      padding: 30px;
+      margin-top: -50px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 100;
+    }
+    
+    .search-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    /* Services Section */
+    .section-title {
+      text-align: center;
+      margin: 60px 0 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .section-title p {
+      color: var(--dark);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .service-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .service-img {
+      height: 200px;
+      background-color: #ddd;
+    }
+    
+    .service-content {
+      padding: 20px;
+    }
+    
+    .service-content h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .service-content p {
+      margin-bottom: 20px;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 60px 0;
+    }
+    
+    .testimonial-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 30px;
+      padding: 20px 0;
+    }
+    
+    .testimonial-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+      min-width: 300px;
+      scroll-snap-align: start;
+    }
+    
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 15px;
+      background-color: var(--accent);
+    }
+    
+    .testimonial-author h4 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .testimonial-author p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+    }
+    
+    /* Map Section */
+    .map-section {
+      padding: 40px 0;
+      position: center;
+      
+    }
+    .map{
+      position: relative;
+      padding-bottom:40%; 
+      height: 0;
+      overflow: hidden;
+      max-width: 800px; 
+      margin: 0 auto;
+    }
+   
+   /* .map-container {
+      height: 400px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      
+    }
+    
+    /* Video Section */
+    .video-section {
+      background-color: var(--light);
+      padding: 60px 0;
+    }
+    
+    .video-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 400px;
+      background-color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .gallery-item {
+      height: 200px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .search-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </footer>
+</body>
+</html>
