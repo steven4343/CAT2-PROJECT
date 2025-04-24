@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - CUZ_AIRLINE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: white;
+      color: #222;
+      overflow-x: hidden;
+    }
+    header button:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+
+    header {
+      background-color: rgb(26, 90, 26);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .intro p, .sustainability p {
+      font-family:sans-serif;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .intro p:hover, .sustainability p:hover {
+      color: green;
+    }
+
+    .video-container {
+      position: relative;
+      padding-top: 56.25%;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-left: 5px solid red;
+      transition: background 0.3s;
+    }
+
+    .timeline-item:hover {
+      background: #ffe6e6;
+    }
+
+    .values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .value-card {
+      flex: 1 1 30%;
+      background: #e6ffe6;
+      border-left: 5px solid green;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-members {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .team-track {
+      display: flex;
+      animation: slideTeam 12s linear infinite;
+    }
+
+    @keyframes slideTeam {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .member {
+      text-align: center;
+      min-width: 150px;
+      margin: 0 1rem;
+    }
+
+    .member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgb(188, 189, 197);
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s;
+    }
+
+    .member img:hover {
+      transform: scale(1.1);
+    }
+
+    .member-name {
+      font-weight: bold;
+    }
+
+    .fleet {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .aircraft {
+      flex: 1 1 30%;
+      background: #f9fff9;
+      border-left: 5px solid green;
+      padding: 1rem;
+    }
+
+    .awards-logos {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .award {
+      background: #f0f0f0;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .award:hover {
+      transform: scale(1.05);
+    }
+
+    .award img {
+      width: 60px;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.5rem;
+    }
+
+    .facts {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .fact {
+      background: #fff;
+      border: 2px solid green;
+      padding: 1rem;
+      font-size: 1.5rem;
+      flex: 1 1 30%;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .fact:hover {
+      background: #e6ffe6;
+    }
+
+    .cta {
+      background-color: rgb(44, 66, 51);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .cta button, .careers button {
+      background: white;
+      color: rgb(243, 56, 87);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .cta button:hover, .careers button:hover {
+      background: #ffe6e6;
+    }
+
+    @media (max-width: 768px) {
+      .value-card, .aircraft, .fact {
+        flex: 1 1 100%;
+      }
+      .team-members {
+        overflow-x: auto;
+      }
+      .team-track {
+        animation: none;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <header>
+    <h1>About Us</h1>
+  </header> -->
+  <header>
+    <div style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: auto;">
+      <button onclick="window.location.href='index.html'" style="background: none; border: none; color: white; font-size: 1.2rem; display: flex; align-items: center; cursor: pointer;">
+        ← Back to Home
+      </button>
+      <h1 style="flex-grow: 1; text-align: center;">About Us</h1>
+      <div style="width: 120px;"></div> <!-- Spacer for alignment -->
+    </div>
+  </header>
+  
+
+  <section class="intro">
+    <h2>Who We Are</h2>
+    <p><b><span style="color: red;">Cav</span>_<span style="color: green;">Airline</span></b> is committed to connecting people and destinations with comfort, safety, and innovation. Our story is one of ambition and excellence.</p>
+  </section>
+
+  <section class="video">
+    <h2>Watch Our Story</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/Scxs7L0vhZ4" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <h2>Our Journey</h2>
+    <div class="timeline-item">2020 - CUZ_AIRLINE was founded.</div>
+    <div class="timeline-item">2021 - First international flight launched.</div>
+    <div class="timeline-item">2023 - Reached 1 million passengers.</div>
+  </section>
+
+  <section class="mission">
+    <h2>Mission, Vision & Values</h2>
+    <div class="values">
+      <div class="value-card"><strong>Mission:</strong> To connect people with comfort and care.</div>
+      <div class="value-card"><strong>Vision:</strong> To be the world’s most loved regional airline.</div>
+      <div class="value-card"><strong>Values:</strong> Safety, Hospitality, Innovation, Sustainability</div>
+    </div>
+  </section>
+
+  <section class="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-members">
+      <div class="team-track">
+        <div class="member">
+            <img src="Assets/images/nadine.jpg" alt="Ms Nadine" />
+            <div class="member-name">Ms Nadine<br>- Products Designer</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/steven.jpg" alt="Scientist" />
+            <div class="member-name">Mr Steven <br>- Backend Dev</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/peter.jpg" alt="Peter" />
+            <div class="member-name">Mr Peter<br>- Backend Dev</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/richard.jpg" alt="Richard" />
+            <div class="member-name">Mr Richard<br>- Products Developer</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/maggie.jpg" alt="Maggie" />
+            <div class="member-name">Ms Maggie <br>- Frontend Dev</div>
+        </div>x
+        <div class="member">
+            <img src="/Assets/images/precious.jpg" alt="Precious" />
+            <div class="member-name">Ms Precious <br> - Marketing Manager</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/Benson.jpg" alt="Maggie" />
+            <div class="member-name">Mr Benson <br>- Frontend Dev</div>
+        </div>
+        <div class="member">
+            <img src="/Assets/images/juanita.jpg" alt="Juanita" />
+            <div class="member-name">Ms Juanita <br>- Social Media Manager</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/Kalenga muma.jpg" alt="Kalenga" />
+            <div class="member-name">Mr Kalenga <br>- Frontend Dev</div>
+        </div>
+        <div class="member">
+            <img src="Assets/images/WhatsApp Image 2025-04-16 at 13.39.21_2cee2b4d.jpg" alt="Christian" />
+            <div class="member-name">Dr Christian - IT Support/Consultant </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fleet">
+    <h2>Our Fleet</h2> 
+    <div class="aircraft">Airbus A320 - Short to medium range travel with comfort and efficiency.</div>
+    <div class="aircraft">Boeing 737 - Reliable aircraft serving both domestic and regional routes.</div>
+    <div class="aircraft">Embraer E190 - Ideal for regional flights with great passenger experience.</div>
+  </section>
+
+  <section class="awards">
+    <h2>Our Awards</h2>
+    <div class="awards-logos">
+      <div class="award">
+        <img src="/Assets/logos/CavSchedule logo.png" alt="Award 1" />
+        <p>Best Regional Airline 2023</p>
+      </div>
+      <div class="award">
+        <img src="https://cdn-icons-png.flaticon.com/512/3039/3039436.png" alt="Award 2" />
+        <p>Top Safety Standards Award</p>
+      </div>
+      <div class="award">
+        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Award 3" />
+        <p>Customer Service Excellence</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sustainability">
+    <h2>Our Sustainability Efforts</h2>
+    <p>We are committed to reducing our carbon footprint through innovation, sustainable fuel use, and efficient operations. Our initiatives ensure we contribute to a greener future for aviation.</p>
+  </section>
+
+  <section class="facts">
+    <h2>Interesting Facts</h2>
+    <div class="facts">
+      <div class="fact">120+ Daily Flights</div>
+      <div class="fact">90% On-Time Performance</div>
+      <div class="fact">5 Million+ Happy Passengers</div>
+    </div>
+  </section>
+
+  <section class="careers">
+    <h2>Careers at CUZ_AIRLINE</h2>
+    <p>Looking to soar high with your career? Join our growing family of aviation professionals and explore exciting opportunities across the globe.</p>
+    <div style="text-align:center; margin-top: 1rem;">
+      <button onclick="window.location.href='#'">Explore Careers</button>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Experience the CUZ_AIRLINE Difference Today!</h2>
+    <button>Book Your Flight</button>
+  </section>
+</body>
+
+</html>
