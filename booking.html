@@ -7,6 +7,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<link rel="stylesheet" href="style.css">
 
   <style>
     :root {
@@ -620,41 +621,44 @@
   </style>
 </head>
 <body>
-  <!-- Header and Navigation -->
-  <div class="sidebar">
-    <div class="container">
-      <ul>
-        <li onclick= hideTaggle()>Close</li>
-       <li><a href = "">HOME</a></li>
-       <li><a href = "">Flights</a></li>
-       <li><a href = "">About Us</a></li>
-       <li><a href = "">Contact Us</a></li>
-       <li><a href = "">Profile</a></li>
-      </ul>
-    </div>
-   </div>
-
   <header>
     <div class="container">
       <nav class="navbar">
-
-        <div class="icontaggle">
-          <i class="fa-solid fa-bars" onclick = "showTaggle()"></i>
-        </div>
         <div class="logo">
+          <img src="/images/CavSchedule logo.png" alt="CavAirline Logo">
           <h1>Cav<span>Airline</span></h1>
         </div>
-        <ul class="nav-links">
-          <li><a href="/index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="/FlightSchedule.html"><i class="fas fa-plane"></i> Flights</a></li>
-          <li><a href="/about.html"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
-          <li><a href="/contact.html"><i class="fas fa-phone"></i> Contact</a></li>
-          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        
+        <!-- Hamburger Menu Button (Mobile Only) -->
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li class="dropdown">
+            <a href="#"><i class="fas fa-plane"></i> Services <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content">
+            <a href="#" class="booking-link">Booking</a>
+              <a href="blog.html">Blog</a>
+              <a href="Our Services.html">Our Services</a>
+              <a href="FlightSchedule.html">Flight Schedule</a>
+            </div>
+          </li>
+          <li><a href="about.html"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+          <li class="dropdown" id="profileDropdown">
+            <a href="#"><i class="fas fa-user"></i> <span id="profileName">Profile</span> <i class="fas fa-chevron-down"></i></a>
+            <div class="dropdown-content" id="profileDropdownContent">
+              <!-- Dynamically filled -->
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
-
   <!-- Booking Header -->
   <section class="booking-header">
 
@@ -1568,6 +1572,103 @@
                     });
 
                 </script>
+    <script>
+      // Check for logged-in user MADSCIENTIST
+// Auth functions - include this in all pages
+document.addEventListener('DOMContentLoaded', function() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const profileName = document.getElementById("profileName");
+  const profileDropdown = document.getElementById("profileDropdown");
+  const profileDropdownContent = document.getElementById("profileDropdownContent");
+  const bookingLinks = document.querySelectorAll('.booking-link');
+
+  // Update profile dropdown based on login status
+  if (user && user.username) {
+      // User is logged in
+      profileName.textContent = user.username;
+      profileDropdownContent.innerHTML = `
+          <a href="#" onclick="logout()">Logout</a>
+      `;
+      
+      // Enable booking links
+      bookingLinks.forEach(link => {
+          link.href = "booking.html";
+      });
+  } else {
+      // User not logged in
+      profileName.textContent = "Profile";
+      profileDropdownContent.innerHTML = `
+          <a href="login.html">Login</a>
+          <a href="signup.html">Signup</a>
+      `;
+      
+      // Handle booking links - redirect to login
+      bookingLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              alert('Please login to access booking');
+              window.location.href = 'login.html?redirect=booking.html';
+          });
+      });
+  }
+
+  // Mobile menu handling 
+  // ...
+});
+
+function logout() {
+  localStorage.removeItem("user");
+  window.location.href = "index.html";
+}
+
+// Booking page protection 
+function checkAuth() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+      alert('Please login to access this page');
+      window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.pathname);
+  }
+}
+
+
+
+
+  // handle mobile menu
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const dropdowns = document.querySelectorAll('.dropdown');
     
+    // Toggle mobile menu
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Handle dropdowns on mobile
+    dropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('a');
+      
+      link.addEventListener('click', function(e) {
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+        }
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 992 && 
+          !e.target.closest('.navbar') && 
+          navLinks.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        dropdowns.forEach(d => d.classList.remove('active'));
+      }
+    });
+  });
+  </script>
+
 </body>
 </html>
