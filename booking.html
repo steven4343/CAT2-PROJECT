@@ -561,22 +561,94 @@
         flex-direction: column;
       }
     }
+
+    .sidebar{
+      position: absolute;
+      top: 15%;
+      right: 0;
+      z-index: 99;
+      padding-top: 8px;
+      width:25%;
+      height:60vh;
+      background-color: rgba(255, 255, 255, 0.233);
+      border-top-left-radius: 15px;
+      border-bottom-left-radius:15px;
+      backdrop-filter: blur(10px);
+      display: none;
+
+    }
+
+    .sidebar .container ul{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    .sidebar .container ul li{
+     list-style: none;
+     margin-bottom: 5px;
+     border-bottom: 2px solid #FDB913;
+      
+    }
+
+
+    .sidebar .container ul li:hover{
+    background-color: #006B3F;
+      
+    }
+
+    .sidebar .container ul li a{
+     text-decoration: none;
+     color:  #333333;
+     font-weight: bolder;
+     font-size: 20px;
+      
+    }
+
+    .sidebar .container ul li a:hover{
+      color:  #FDB913 ;
+      
+    }
+
+    @media (max-width:420px){
+      header .container .navbar .nav-links{
+        display: none;
+      }
+    }
+
   </style>
 </head>
 <body>
   <!-- Header and Navigation -->
+  <div class="sidebar">
+    <div class="container">
+      <ul>
+        <li onclick= hideTaggle()>Close</li>
+       <li><a href = "">HOME</a></li>
+       <li><a href = "">Flights</a></li>
+       <li><a href = "">About Us</a></li>
+       <li><a href = "">Contact Us</a></li>
+       <li><a href = "">Profile</a></li>
+      </ul>
+    </div>
+   </div>
+
   <header>
     <div class="container">
       <nav class="navbar">
+
+        <div class="icontaggle">
+          <i class="fa-solid fa-bars" onclick = "showTaggle()"></i>
+        </div>
         <div class="logo">
-          <img src="/images/airline-logo.jpg" alt="CavAirline Logo">
           <h1>Cav<span>Airline</span></h1>
         </div>
         <ul class="nav-links">
-          <li><a href="/index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="/FlightSchedule.html"><i class="fas fa-plane"></i> Flights</a></li>
-          <li><a href="/AboutUs.html"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
-          <li><a href="/Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-plane"></i> Flights</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
+          <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
           <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
         </ul>
       </nav>
@@ -593,8 +665,8 @@
               <img src="images/primium plane.jpg" alt="">
             </div>
             <div class="containerContent">
-              <h2 style="color: #006B3F">Book Your Flight</h2>
-              <p style="color:  rgb(148, 16, 45)">Easy and secure flight booking with CavAirline - Your journey begins here</p>
+              <h2>Book Your Flight</h2>
+              <p>Easy and secure flight booking with CavAirline - Your journey begins here</p>
             </div>
             
         </div>
@@ -605,8 +677,8 @@
               <img src="images/plane (6).jpg" alt="">
             </div>
             <div class="containerContent">
-              <h2 style="color: #006B3F">Start Planing Your Next Trip</h2>
-              <p style="color: rgb(148, 16, 45)">A Welcocming Space, Experience Tranqulity, And Elevate Your Experience</p>
+              <h2>Start Planing Your Next Trip</h2>
+              <p>A Welcocming Space, Experience Tranqulity, And Elevate Your Experience</p>
             </div>
             
         </div>
@@ -617,8 +689,8 @@
               <img src="images/plane.jpg" alt="">
             </div>
             <div class="containerContent">
-              <h2 style="color: #006B3F">Book Your Flight</h2>
-              <p style="color: rgb(216, 216, 30)">Easy and secure flight booking with CavAirline - Your journey begins here</p>
+              <h2>Book Your Flight</h2>
+              <p>Easy and secure flight booking with CavAirline - Your journey begins here</p>
             </div>
             
         </div>
@@ -1119,26 +1191,22 @@
 
 
 
-   <!-- <script type="text/javascript">
-        function displayFlex(){
-            const disp1 = document.querySelector('#select-flights')
-            disp1.style.display = "block";
-
-            const disp2 = document.querySelector('#search-flights')
-            disp2.style.display = "none";
+   <script type="text/javascript">
+        function showTaggle(){
+          const showTaggle = document.querySelector('.sidebar')
+          showTaggle.style.display = "block";
         }
-        
-        function backToSearch(){
-            const disp1 = document.querySelector('#select-flights')
-            disp1.style.display = "none";
 
-            const disp2 = document.querySelector('#search-flights')
-            disp2.style.display = "block";
+        function hideTaggle(){
+          const hideTaggle = document.querySelector('.sidebar');
+          hideTaggle.style.display = 'none';
         }
-    </script> --->
+    </script>
 
     <script src="https://js.stripe.com/v3/"></script>
 <script>
+  
+
     const stripe = Stripe("your-publishable-key");
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -1416,6 +1484,8 @@
         window.location.href = "index.html"; // Replace with your home page URL
       });
     }
+
+  
   </script>
 
   <script>
