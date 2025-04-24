@@ -16,7 +16,7 @@
     }
     
     body {
-      background-color: var(--light);
+      background-color: var(--light); 
       color: var(--dark);
       line-height: 1.6;
     }
@@ -27,6 +27,28 @@
       margin: 0 auto;
       padding: 0 20px;
     }
+
+    .hero .container{
+      z-index: 90;
+    }
+
+    .vedi {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+      z-index: -1;
+    }
+
+    .vedi video{
+      height: 56vh;
+      width: 100%;
+      object-fit: cover;
+
+    } 
     
     /* Header and Navigation */
     header {
@@ -115,10 +137,15 @@
     
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;
+     /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;*/
       color: var(--white);
       padding: 100px 0;
       text-align: center;
+      /* Removed invalid property. Use a <video> element or pseudo-element for video backgrounds. */
+      background-size: cover;
+      position: relative;
+      text-align: center;
+
     }
     
     .hero h2 {
@@ -133,6 +160,7 @@
       margin-left: auto;
       margin-right: auto;
     }
+    
     
     .btn {
       display: inline-block;
@@ -195,17 +223,19 @@
     /* Services Section */
     .section-title {
       text-align: center;
+      color: black;
       margin: 60px 0 30px;
     }
     
     .section-title h2 {
       font-size: 2.2rem;
-      color: var(--primary);
+      color: var(--primary); 
       margin-bottom: 10px;
+      /* color: #FFFFFF; */
     }
     
     .section-title p {
-      color: var(--dark);
+      color: rgb(15, 15, 15);
       max-width: 700px;
       margin: 0 auto;
     }
@@ -234,23 +264,32 @@
       height: 200px;
       background-color: #ddd;
     }
-    
+    .service-img img{
+      background-size: contain;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: relative;
+    }
     .service-content {
       padding: 20px;
+      color: #005230;
     }
     
     .service-content h3 {
       color: var(--primary);
       margin-bottom: 10px;
+      color: green;
     }
     
     .service-content p {
       margin-bottom: 20px;
+      color: rgb(250, 253, 253);
     }
     
     /* Testimonials */
     .testimonials {
-      background-color: var(--primary);
+      /* background-color: var(--primary); */
+      background: #020129;
       color: var(--white);
       padding: 60px 0;
     }
@@ -265,7 +304,8 @@
     }
     
     .testimonial-card {
-      background-color: rgba(255, 255, 255, 0.1);
+      /* background-color: rgba(255, 255, 255, 0.1); */
+      background: #006B3F;
       padding: 30px;
       border-radius: 10px;
       min-width: 300px;
@@ -277,11 +317,13 @@
       align-items: center;
       margin-bottom: 20px;
     }
-    
-    .testimonial-img {
-      width: 60px;
-      height: 60px;
+    .testimonial img{
       border-radius: 50%;
+    }
+    .testimonial-img {
+      /* width: 60px;*/
+      height: 30px; 
+      border-radius: 50px;
       margin-right: 15px;
       background-color: var(--accent);
     }
@@ -323,7 +365,7 @@
       justify-content: center;
       align-items: center;
       height: 400px;
-      background-color: whitesmoke;
+      background-color: rgb(11, 56, 15);
       border-radius: 10px;
       overflow: hidden;
       width: 80%;
@@ -345,7 +387,7 @@
     
     .gallery-item {
       height: 200px;
-      background-color: #ddd;
+      background-color: #105a10;
       border-radius: 10px;
       overflow: hidden;
     }
