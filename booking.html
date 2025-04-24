@@ -105,55 +105,73 @@
     
     /* Booking Header */
     .booking-header {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/300') center/cover no-repeat;
-      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      background-color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .mainContainer {
+      position: relative;
+      width: 90%;
+      max-width: 1200px;
       text-align: center;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-
+      padding: 20px;
+      border-radius: 15px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      box-shadow: 0 0 15px rgba(0, 107, 63, 0.5);
     }
 
-    .booking-header .container{
-        position:relative;
-        width: 100%;
-        height: 60vh;
-        background-color: white;
-       
+    .text-slide {
+      position: relative;
+      overflow: hidden;
     }
 
-    .booking-header .container .containerimg{
-        width: 100%;
-        height: 60vh;
-        object-fit: cover;
-
+    .slide {
+      display: none;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    .booking-header .container .containerimg img{
-        width: 100%;
-        height: 58vh;
-        object-fit: cover;
-    }
-
-    .booking-header .container .containerContent{
-        position: absolute;
-        width: 50%;
-        height: 25vh;
-        color: #FDB913;
-        top: 20%;
-        z-index: 99;
-    }
-    
-    .booking-header h2 {
+    .slide h2 {
       font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-weight: bold;
+      color: var(--white);
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 10px;
     }
-    
-    .booking-header p {
+
+    .slide p {
       font-size: 1.2rem;
-      max-width: 700px;
-      font-weight: bolder;
-      margin: 0 auto;
+      color: var(--white);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .slide h2 {
+        font-size: 2rem;
+      }
+
+      .slide p {
+        font-size: 1rem;
+      }
     }
     
     /* Booking Process */
@@ -163,7 +181,7 @@
       margin: 40px 0;
       position: relative;
     }
-    
+
     .booking-step {
       display: flex;
       flex-direction: column;
@@ -171,8 +189,9 @@
       position: relative;
       z-index: 2;
       width: 150px;
+      transition: all 0.3s ease-in-out;
     }
-    
+
     .step-number {
       width: 40px;
       height: 40px;
@@ -184,37 +203,36 @@
       justify-content: center;
       font-weight: bold;
       margin-bottom: 10px;
+      transition: background-color 0.3s ease-in-out;
     }
-    
+
     .step-name {
       font-weight: 500;
       text-align: center;
     }
-    
-    .booking-process::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      left: 25%;
-      width: 50%;
-      height: 2px;
-      background-color: var(--primary);
-      z-index: 1;
-    }
-    
+
     .booking-step.active .step-number {
-      background-color: var(--accent);
+      background-color: var(--accent); /* Yellow color for the current step */
     }
-    
+
     .booking-step.completed .step-number {
-      background-color: var(--success);
+      background-color: var(--success); /* Green color for completed steps */
+    }
+
+    @media (max-width: 768px) {
+      .booking-step {
+        width: 90px;
+      }
+
+      .step-name {
+        font-size: 0.8rem;
+      }
     }
     
     /* Booking Form */
     .booking-form-container {
       background-color: var(--white);
       border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       padding: 30px;
       margin-bottom: 50px;
     }
@@ -282,70 +300,78 @@
     /* Flight Selection */
     .flight-options {
       margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
-    
+
     .flight-card {
       background-color: var(--white);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px;
-      margin-bottom: 20px;
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
-    
+
     .flight-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
-    
+
     .flight-card.selected {
       border: 2px solid var(--primary);
       background-color: rgba(0, 107, 63, 0.05);
     }
-    
+
     .flight-info {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      gap: 30px;
+      gap: 20px;
+      flex: 1;
     }
-    
+
     .flight-time {
       text-align: center;
+      flex: 1;
     }
-    
+
     .flight-time .time {
       font-size: 1.5rem;
       font-weight: bold;
     }
-    
+
     .flight-time .date {
       font-size: 0.9rem;
       color: #666;
     }
-    
+
     .flight-route {
       display: flex;
       align-items: center;
       gap: 15px;
+      flex: 1;
     }
-    
+
     .flight-stops {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    
+
     .route-line {
       width: 100px;
       height: 2px;
       background-color: #666;
       position: relative;
     }
-    
+
     .route-line::before {
       content: '\2022';
       position: absolute;
@@ -353,7 +379,7 @@
       left: 0;
       color: #666;
     }
-    
+
     .route-line::after {
       content: '\2022';
       position: absolute;
@@ -361,26 +387,58 @@
       right: 0;
       color: #666;
     }
-    
+
     .flight-details {
       display: flex;
       flex-direction: column;
       gap: 5px;
+      flex: 1;
     }
-    
+
     .flight-number {
       font-weight: 500;
     }
-    
+
     .flight-duration {
       font-size: 0.9rem;
       color: #666;
     }
-    
+
     .flight-price {
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--primary);
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .flight-card {
+        flex-direction: row; /* Keep the same layout */
+        align-items: center;
+        gap: 10px;
+        padding: 15px; /* Reduce padding */
+        transform: scale(0.9); /* Scale down the card */
+      }
+
+      .flight-time .time {
+        font-size: 1.2rem; /* Reduce font size */
+      }
+
+      .flight-time .date {
+        font-size: 0.8rem; /* Reduce font size */
+      }
+
+      .flight-route {
+        gap: 10px; /* Reduce spacing */
+      }
+
+      .route-line {
+        width: 80px; /* Reduce width */
+      }
+
+      .flight-price {
+        font-size: 1.2rem; /* Reduce font size */
+      }
     }
     
     /* Passenger Info */
@@ -402,18 +460,20 @@
       align-items: center;
       padding: 15px 0;
       border-bottom: 1px solid var(--border);
+      flex-wrap: wrap; /* Allow wrapping for smaller screens */
     }
-    
+
     .service-option:last-child {
       border-bottom: none;
     }
-    
+
     .service-info {
       display: flex;
       align-items: center;
       gap: 15px;
+      flex: 1; /* Allow the service info to take up available space */
     }
-    
+
     .service-icon {
       width: 40px;
       height: 40px;
@@ -423,14 +483,68 @@
       align-items: center;
       justify-content: center;
       color: var(--primary);
+      flex-shrink: 0; /* Prevent the icon from shrinking */
     }
-    
+
     .service-details h4 {
       margin-bottom: 5px;
+      font-size: 1rem; /* Default font size */
     }
-    
+
+    .service-details p {
+      font-size: 0.9rem; /* Default font size */
+      color: var(--dark);
+    }
+
     .service-price {
       font-weight: bold;
+      font-size: 1rem; /* Default font size */
+      text-align: right;
+      flex-shrink: 0; /* Prevent the price from shrinking */
+    }
+
+    @media (max-width: 768px) {
+      .service-option {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Add spacing between stacked items */
+      }
+
+      .service-info {
+        flex-direction: row; /* Keep the icon and text in a row */
+        gap: 10px; /* Reduce spacing */
+      }
+
+      .service-details h4 {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+      }
+
+      .service-details p {
+        font-size: 0.8rem; /* Reduce font size for smaller screens */
+      }
+
+      .service-price {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+        text-align: left; /* Align price to the left */
+      }
+    }
+
+    @media (min-width: 769px) {
+      .service-option {
+        flex-direction: row; /* Keep items in a row for larger screens */
+      }
+
+      .service-details h4 {
+        font-size: 1rem; /* Restore font size for larger screens */
+      }
+
+      .service-details p {
+        font-size: 0.9rem; /* Restore font size for larger screens */
+      }
+
+      .service-price {
+        font-size: 1rem; /* Restore font size for larger screens */
+      }
     }
     
     /* Payment */
@@ -561,6 +675,88 @@
         flex-direction: column;
       }
     }
+
+    /* Payment Form Styling */
+    .payment-form {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background-color: var(--light);
+      box-shadow: 0 4px 10px rgba(44, 27, 27, 0.1);
+    }
+
+    .payment-form h4 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .payment-form label {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .payment-form input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .payment-form input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .payment-form button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--white);
+      background-color: var(--primary);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .payment-form button:hover {
+      background-color: #005230;
+    }
+
+    @media (max-width: 768px) {
+      .payment-form {
+        padding: 15px;
+      }
+
+      .payment-form h4 {
+        font-size: 1.2rem; /* Reduce font size for smaller screens */
+      }
+
+      .payment-form label {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+      }
+
+      .payment-form input {
+        padding: 10px; /* Reduce padding for smaller screens */
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+      }
+
+      .payment-form button {
+        padding: 10px; /* Reduce padding for smaller screens */
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+      }
+    }
   </style>
 </head>
 <body>
@@ -573,10 +769,10 @@
           <h1>Cav<span>Airline</span></h1>
         </div>
         <ul class="nav-links">
-          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="#"><i class="fas fa-plane"></i> Flights</a></li>
-          <li><a href="#"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
-          <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+          <li><a href="/index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="/FlightSchedule.html"><i class="fas fa-plane"></i> Flights</a></li>
+          <li><a href="/AboutUs.html"><i class="fas fa-map-marker-alt"></i> About Us</a></li>
+          <li><a href="/Contact.html"><i class="fas fa-phone"></i> Contact</a></li>
           <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
         </ul>
       </nav>
@@ -585,45 +781,22 @@
 
   <!-- Booking Header -->
   <section class="booking-header">
-
     <div class="mainContainer">
-        <div class="container">
-
-            <div class="containerimg">
-              <img src="images/primium plane.jpg" alt="">
-            </div>
-            <div class="containerContent">
-              <h2>Book Your Flight</h2>
-              <p>Easy and secure flight booking with CavAirline - Your journey begins here</p>
-            </div>
-            
+      <div class="text-slide">
+        <div class="slide active">
+          <h2>Fly in Style</h2>
+          <p>Experience luxury and comfort like never before with CavAirline.</p>
         </div>
-      
-        <div class="container">
-      
-            <div class="containerimg">
-              <img src="images/plane (6).jpg" alt="">
-            </div>
-            <div class="containerContent">
-              <h2>Start Planing Your Next Trip</h2>
-              <p>A Welcocming Space, Experience Tranqulity, And Elevate Your Experience</p>
-            </div>
-            
+        <div class="slide">
+          <h2>Explore the World</h2>
+          <p>Discover new destinations and create unforgettable memories.</p>
         </div>
-      
-        <div class="container">
-      
-            <div class="containerimg">
-              <img src="images/plane.jpg" alt="">
-            </div>
-            <div class="containerContent">
-              <h2>Book Your Flight</h2>
-              <p>Easy and secure flight booking with CavAirline - Your journey begins here</p>
-            </div>
-            
+        <div class="slide">
+          <h2>Book Your Journey</h2>
+          <p>Seamless and secure booking for your next adventure.</p>
         </div>
+      </div>
     </div>
-    
   </section>
 
   <!-- Booking Process Steps -->
@@ -1480,7 +1653,29 @@
     });
   </script>
 
-  
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length; // Loop back to the first slide
+      showSlide(currentSlide);
+    }
+
+    // Show the first slide initially
+    showSlide(currentSlide);
+
+    // Automatically change slides every 4 seconds
+    setInterval(nextSlide, 4000);
+  });
+</script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
@@ -1493,11 +1688,91 @@
                             autoplaySpeed: 4000, /* Duration between auto slide */
                             infinite: true, /* Allows continuous loop sliding */
                             slidesToShow: 1, /* Number of slides visible */
-                            slidesToScroll: 1
+                            slidesToScroll: 1,
+                            fade: true, // Smooth fade transition
+                            cssEase: "linear",
                         });
                     });
 
                 </script>
     
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const steps = document.querySelectorAll(".booking-step");
+    const sections = [
+      document.querySelector("#search-flights"),
+      document.querySelector("#select-flights"),
+      document.querySelector("#passenger-info"),
+      document.querySelector("#payment"),
+    ];
+    let currentStep = 0;
+
+    function showStep(step) {
+      sections.forEach((section, index) => {
+        section.style.display = index === step ? "block" : "none";
+      });
+
+      steps.forEach((stepElement, index) => {
+        stepElement.classList.toggle("active", index === step); // Highlight the current step
+        stepElement.classList.toggle("completed", index < step); // Mark completed steps
+      });
+
+      // Adjust step visibility for smaller screens
+      adjustStepVisibility(step);
+
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function adjustStepVisibility(step) {
+      const isSmallScreen = window.innerWidth <= 768; // Define small screen size
+      steps.forEach((stepElement, index) => {
+        if (isSmallScreen) {
+          // Show only the current step and the next step
+          stepElement.style.display =
+            index === step || index === step + 1 ? "flex" : "none";
+        } else {
+          // Show all steps for larger screens
+          stepElement.style.display = "flex";
+        }
+      });
+    }
+
+    // Navigation logic for "Next" and "Back" buttons
+    document.querySelector("#continue-to-passengers").addEventListener("click", () => {
+      if (currentStep < sections.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    });
+
+    document.querySelector("#continue-to-payment").addEventListener("click", () => {
+      if (currentStep < sections.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    });
+
+    document.querySelector("#back-to-search").addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    document.querySelector("#back-to-select-flights").addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    // Adjust step visibility on window resize
+    window.addEventListener("resize", () => adjustStepVisibility(currentStep));
+
+    // Initialize the first step
+    showStep(currentStep);
+  });
+</script>
 </body>
 </html>

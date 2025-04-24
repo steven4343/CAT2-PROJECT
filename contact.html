@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - CavAirline</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #006B3F; /* Zambian flag green */
+      --secondary: #CE1126; /* Zambian flag red */
+      --accent: #FDB913; /* Zambian gold/yellow */
+      --dark: #333333;
+      --light: #F5F5F5;
+      --white: #FFFFFF;
+      --border: #DDDDDD;
+      --glow: rgba(255, 255, 255, 0.8);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .contact-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-header h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    .contact-header p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: var(--glow);
+    }
+
+    .contact-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+      animation: sparkle 3s infinite;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent);
+      }
+      to {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent), 0 0 40px var(--accent);
+      }
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.5);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .contact-section {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+
+    .chatbot-container {
+      flex: 1 1 48%;
+      background: linear-gradient(to bottom, var(--white), var(--light));
+      border-radius: 20px; /* Smooth edges retained */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer shadow */
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 10px 10px 0 0;
+      color: var(--white);
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid var(--border);
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    .chatbot-input button {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .chatbot-input button:hover {
+      background-color: #005230;
+    }
+
+    .contact-container {
+      flex: 1 1 48%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .contact-item {
+      flex: 1 1 calc(50% - 20px);
+      background-color: var(--white);
+      border-radius: 20px; /* Smooth edges retained */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer shadow */
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .contact-item:nth-child(1) { animation-delay: 0.2s; }
+    .contact-item:nth-child(2) { animation-delay: 0.4s; }
+    .contact-item:nth-child(3) { animation-delay: 0.6s; }
+    .contact-item:nth-child(4) { animation-delay: 0.8s; }
+    .contact-item:nth-child(5) { animation-delay: 1s; }
+    .contact-item:nth-child(6) { animation-delay: 1.2s; }
+
+    .contact-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      background-color: var(--accent);
+      color: var(--white);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+    }
+
+    .contact-item i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .contact-item:hover i {
+      color: var(--white);
+    }
+
+    .contact-item h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-item p {
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .chatbot-container,
+      .contact-container {
+        flex: 1 1 100%;
+      }
+
+      .contact-header h1 {
+        font-size: 2.5rem;
+      }
+
+      .contact-header p {
+        font-size: 1rem;
+      }
+
+      .logo img {
+        height: 35px; /* Adjusted for smaller screens */
+      }
+
+      .logo h1 {
+        font-size: 1.4rem; /* Adjusted font size for logo text */
+      }
+
+      .chatbot-container {
+        height: 400px; /* Adjusted height for smaller screens */
+      }
+
+      #scrollToTop {
+        display: block; /* Ensure visibility on small screens */
+        bottom: 10px; /* Adjust position for smaller screens */
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo img {
+        height: 30px; /* Further reduce logo size for very small screens */
+      }
+
+      .logo h1 {
+        font-size: 1.2rem; /* Further adjust font size */
+      }
+
+      .chatbot-container {
+        height: 350px; /* Further adjust chatbot height */
+      }
+
+      #scrollToTop {
+        bottom: 8px; /* Slightly adjust position */
+        right: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="CavAirline Logo">
+        <h1>CavAirline</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="booking.html">Book</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Contact Header -->
+  <section class="contact-header">
+    <h1>Get in Touch</h1>
+    <p>We’re here to help you 24/7. Reach out to us through any of the options below!</p>
+  </section>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+      <div class="chatbot-header">Chat with Us</div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <p><strong>Bot:</strong> Hi! How can I assist you today?</p>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbot-input" placeholder="Type your message...">
+        <button id="chatbot-send">Send</button>
+      </div>
+    </div>
+
+    <!-- Contact Options -->
+    <div class="contact-container">
+      <div class="contact-item">
+        <a href="https://wa.me/260123456789" target="_blank" style="text-decoration: none; color: inherit;">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <p>+260 123 456 789</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="https://twitter.com/CavAirline" target="_blank" style="text-decoration: none; color: inherit;">
+          <i class="fab fa-twitter"></i>
+          <h3>Twitter</h3>
+          <p>@CavAirline</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="https://facebook.com/CavAirline" target="_blank" style="text-decoration: none; color: inherit;">
+          <i class="fab fa-facebook"></i>
+          <h3>Facebook</h3>
+          <p>facebook.com/CavAirline</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="https://www.instagram.com/CavAirline" target="_blank" style="text-decoration: none; color: inherit;">
+          <i class="fab fa-instagram"></i>
+          <h3>Instagram</h3>
+          <p>@CavAirline</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="tel:+260987654321" style="text-decoration: none; color: inherit;">
+          <i class="fas fa-phone"></i>
+          <h3>Call Us</h3>
+          <p>+260 987 654 321</p>
+        </a>
+      </div>
+      <div class="contact-item">
+        <a href="mailto:support@cavairline.com" style="text-decoration: none; color: inherit;">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>support@cavairline.com</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <button id="scrollToTop" style="position: fixed; bottom: 20px; right: 20px; background-color: var(--primary); color: var(--white); border: none; padding: 10px 15px; border-radius: 50%; display: none; cursor: pointer;">
+    ↑
+  </button>
+
+  <script>
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    const chatbotInput = document.getElementById("chatbot-input");
+    const chatbotSend = document.getElementById("chatbot-send");
+
+    chatbotSend.addEventListener("click", () => {
+      const userMessage = chatbotInput.value.trim();
+      if (userMessage) {
+        const userMessageElement = document.createElement("p");
+        userMessageElement.innerHTML = `<strong>You:</strong> ${userMessage}`;
+        chatbotMessages.appendChild(userMessageElement);
+
+        // Simulate bot response
+        const botMessageElement = document.createElement("p");
+        botMessageElement.innerHTML = `<strong>Bot:</strong> Thank you for your message. We will get back to you shortly.`;
+        chatbotMessages.appendChild(botMessageElement);
+
+        chatbotInput.value = "";
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+    });
+
+    const scrollToTopButton = document.getElementById("scrollToTop");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        scrollToTopButton.style.display = "block";
+      } else {
+        scrollToTopButton.style.display = "none";
+      }
+    });
+
+    scrollToTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
