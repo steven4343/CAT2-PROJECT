@@ -4,19 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
-  <link rel="stylesheet" href="/login.css" />
+  <link rel="stylesheet" href="login.css" />
+  <style>
+
+    button {
+        text-align: center;
+        background-color: #4d68b4;
+        color: white;
+        width: 75px;
+      }
+  </style>
 </head>
 <body>
   <div class="container">
-    <form class="login-form">
+    <button><a href="index.html">HOME</a></a></button>
+    <form class="login-form" id="loginForm">
       <h2>Login</h2>
-      <input type="text" placeholder="Username" required />
-      <input type="password" placeholder="Password" required />
+      <input type="text" id="loginUsername" placeholder="Username" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
       <button type="submit">Login</button>
       <p class="signup-link">
         Don't have an account? <a href="signup.html">Sign up</a>
       </p>
     </form>
+
+    <script>
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value;
+
+        // Retrieve user data from localStorage
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+
+        if (storedUser && username === storedUser.username && password === storedUser.password) {
+          alert("Login successful!");
+          // Redirect to homepage
+          window.location.href = "booking.html";
+        } else {
+          alert("Invalid username or password.");
+        }
+      });
+    </script>
   </div>
 </body>
 </html>
