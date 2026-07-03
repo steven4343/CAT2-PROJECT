@@ -1,0 +1,20 @@
+# IDE
+.vscode/
+.idea/
+
+# Media
+Videos/
+Audio/
+Assets/Videos/
+Assets/AboutUs videos/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# Config
+db.php
